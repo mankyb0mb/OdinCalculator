@@ -1,2 +1,3 @@
 # OdinCalculator
 Odin Project calculator!
+Maybe I will struggle wit dis lawl...
