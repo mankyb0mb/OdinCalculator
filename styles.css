@@ -32,7 +32,8 @@ body {
     justify-content: right;
     font-family: 'Courier New', Courier, monospace;
     font-size: 74px;
-    text-shadow: 2px 3px 2px rgb(108, 131, 118)
+    text-shadow: 2px 3px 2px rgb(108, 131, 118);
+    padding-right: 3px;
 }
 
 .pad {
@@ -50,6 +51,7 @@ body {
     height: 9vh;
     font-family: 'Courier New', Courier, monospace;
     font-size: 30px;
+    font-weight: 550;
     justify-content: center;
     align-items: center;
 }
@@ -64,18 +66,23 @@ body {
     height: 9vh;
     font-family: 'Courier New', Courier, monospace;
     font-size: 30px;
+    font-weight: 550;
     justify-content: center;
     align-items: center;
 }
 
 .num {
-    background-color: rgb(63, 157, 175);
+    background-color: #3f9daf;
+}
+
+.empty {
+    background-color: #8fe6e9;
 }
 
 .misc {
-    background-color: rgb(225, 252, 242);
+    background-color: #27696b;
 }
 
 .op {
-    background-color: rgb(253, 190, 71);
+    background-color: #fdbe47;
 }
