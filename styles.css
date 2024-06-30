@@ -1,14 +1,81 @@
 body {
-    margin-top: 24vh;
+    margin-top: 18vh;
     display: flex;
-    background-color: rgb(186, 206, 195);
+    background-color: rgb(214, 232, 255);
     align-items: center;
     justify-content: center;
 }
 
 .calcBody {
     display: block;
-    height: 50vh;
-    width: 40vh;
-    background-color: rgb(63, 63, 63);
+    height: 62.2vh;
+    width: 50.2vh;
+    background-color: rgb(59, 87, 105);
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    margin: 1.1vh;
+}
+
+.screen {
+    display: flex;
+    width: 48vh;
+    height: 15vh;
+    background-color: rgb(167, 204, 190);
+    box-sizing: border-box;
+    border: 4px;
+    border-style: solid;
+    border-color: rgb(39, 39, 39);
+    align-items: center;
+    justify-content: right;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 74px;
+    text-shadow: 2px 3px 2px rgb(108, 131, 118)
+}
+
+.pad {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.button {
+    display: flex;
+    width: 11.96vh;
+    box-sizing: border-box;
+    border: 3px;
+    border-radius: 6%;
+    border-style: solid;
+    height: 9vh;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 30px;
+    justify-content: center;
+    align-items: center;
+}
+
+.buttonBig {
+    display: flex;
+    width: 23.92vh;
+    box-sizing: border-box;
+    border: 3px;
+    border-radius: 6%;
+    border-style: solid;
+    height: 9vh;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: 30px;
+    justify-content: center;
+    align-items: center;
+}
+
+.num {
+    background-color: rgb(63, 157, 175);
+}
+
+.misc {
+    background-color: rgb(225, 252, 242);
+}
+
+.op {
+    background-color: rgb(253, 190, 71);
 }
