@@ -41,11 +41,19 @@ function shortener(change, end = "8"){
 
     invert.addEventListener("mouseup", () => {
         invert.style.backgroundColor = "#27696b"
-        if (screen.textContent.at(0) !== "-" && screen.textContent.at(0) !== "0"){
-            display = "-" + screen.textContent
-            screen.textContent = shortener(display, 9)
+        if (screen.textContent.at(0) !== "-"){
+            if (screen.textContent.at(0) == "0" && screen.textContent.length >1) {
+                {
+                    display = "-" + screen.textContent
+                    screen.textContent = shortener(display, 9)
+                }
+            }
+            else if (Number(display) > 0){
+                display = "-" + screen.textContent
+                screen.textContent = shortener(display, 9)
+            }
         }
-        else if (screen.textContent.at(0) !== "0"){
+        else {
             display = display.substring(1)
             screen.textContent = display
         }
@@ -72,6 +80,7 @@ function shortener(change, end = "8"){
 
 //end DARK ROW
 }
+
 
 //OPERATOR BUTTONS =============================================
 {
@@ -144,6 +153,7 @@ equal.addEventListener("mouseup", () => {
 
 //end OPERATOR
 }
+
 
 // NUMBERPAD BUTTONS ===========================================
 {
