@@ -44,6 +44,11 @@ function shortener(change = display, end = "9", exp = false){
         screen.textContent = 0
         display = ""
     })
+
+    AC.addEventListener("mouseleave", () => {
+        AC.style.backgroundColor = "#27696b"
+    })
+    
 }
 
 
@@ -79,6 +84,10 @@ function shortener(change = display, end = "9", exp = false){
             screen.textContent = display
         }
     })
+
+    invert.addEventListener("mouseleave", () => {
+        invert.style.backgroundColor = "#27696b"
+    })
 }
 
 
@@ -96,6 +105,10 @@ function shortener(change = display, end = "9", exp = false){
             console.log(display)
             screen.textContent = shortener()
         }
+    })
+    
+    percent.addEventListener("mouseleave", () => {
+        percent.style.backgroundColor = "#27696b"
     })
 }
 
@@ -221,6 +234,7 @@ equal.addEventListener("mouseup", () => {
         screen.textContent = display
         opType = "none"
         // display = ""
+        opSelected = false
     }
 })
 }
@@ -245,10 +259,15 @@ for (let i = 0; i < 9; i++) {
     numbers[i].addEventListener("mouseup", () => {
         numbers[i].style.backgroundColor = "#3f9daf"
         if (screen.textContent.length < 9 || opSelected) {
+            console.log(screen.textContent.length)
             display += numbers[i].textContent
             console.log(display)
             screen.textContent = display
         }
+    })
+
+    numbers[i].addEventListener("mouseleave", () => {
+        numbers[i].style.backgroundColor = "#3f9daf"
     })
     
 }
@@ -273,6 +292,10 @@ zero.addEventListener("mouseup", () => {
         }
     }
     console.log(display)
+})
+
+zero.addEventListener("mouseleave", () => {
+    zero.style.backgroundColor = "#3f9daf"
 })
 }
 
@@ -304,6 +327,11 @@ decimal.addEventListener("mouseup", () => {
         screen.textContent = display
     }
 })
+
+decimal.addEventListener("mouseleave", () => {
+    decimal.style.backgroundColor = "#3f9daf"
+})
+
 }
 
 //end NUMBERPAD
