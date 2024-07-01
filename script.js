@@ -3,8 +3,16 @@ let display = ""
 let numbers = document.querySelectorAll(".num")
 
 
+let opColor
+
+let numOne = 0
+let numTwo
+let opSelected = false
+let meow = "asdf"
+let opType = "addition"
+
 // LIMITS SCREEN DISPLAY TO 9 CHARACTERS========================
-function shortener(change, end = "8"){
+function shortener(change = display, end = "9"){
     if (change.length >= 9) {
         change = change.substring(0, end)
     }
@@ -26,6 +34,8 @@ function shortener(change, end = "8"){
 
     AC.addEventListener("mouseup", () => {
         AC.style.backgroundColor = "#27696b"
+        opSelected = false
+        opType = null
         screen.textContent = 0
         display = ""
     })
@@ -44,11 +54,17 @@ function shortener(change, end = "8"){
         if (screen.textContent.at(0) !== "-"){
             if (screen.textContent.at(0) == "0" && screen.textContent.length >1) {
                 {
-                    display = "-" + screen.textContent
-                    screen.textContent = shortener(display, 9)
+                    if (Number(display) == 0){
+                        display = ""
+                        screen.textContent = 0
+                    }
+                    else {
+                        display = "-" + screen.textContent
+                        screen.textContent = shortener(display, 9)
+                    }
                 }
             }
-            else if (Number(display) > 0){
+            else if (display > 0){
                 display = "-" + screen.textContent
                 screen.textContent = shortener(display, 9)
             }
@@ -71,8 +87,9 @@ function shortener(change, end = "8"){
     percent.addEventListener("mouseup", () => {
         percent.style.backgroundColor = "#27696b"
         if (screen.textContent !== "0"){
-            display = display / 100
-            screen.textContent = display
+            display = String(display / 100)
+            console.log(display)
+            screen.textContent = shortener()
         }
     })
 }
@@ -84,11 +101,41 @@ function shortener(change, end = "8"){
 
 //OPERATOR BUTTONS =============================================
 {
+let division = document.querySelector(".Divi")
+let multiplication = document.querySelector(".Multi")
+let subtract = document.querySelector(".Minus")
+let addition = document.querySelector(".Plus")
+let equal = document.querySelector(".Equal")
 
+function operatorFunc(type = opType){
+    let signOp
+    if (opType == "division"){
+
+    }
+    else if (opType == "multiplication"){
+        
+    }
+    else if (opType == "subtraction"){
+        
+    }
+    else if (opType == "addition"){
+        console.log(numOne + " + " + display)
+        display = Number(numOne) + Number(display)
+    }
+    console.log(display)
+    return shortener(String(display))
+    opSelected = false
+}
+
+//-----------COLORS BACK
+opColor = () => {
+    division.style.backgroundColor = "#fdbe47"
+    multiplication.style.backgroundColor = "#fdbe47"
+    subtract.style.backgroundColor = "#fdbe47"
+    addition.style.backgroundColor = "#fdbe47"
+}
 
 //-----------DIVISION
-{
-let division = document.querySelector(".Divi")
 division.addEventListener("mousedown", () => {
     division.style.backgroundColor = "#ffe7bb"
 })
@@ -96,12 +143,9 @@ division.addEventListener("mousedown", () => {
 division.addEventListener("mouseup", () => {
     division.style.backgroundColor = "#fdbe47"
 })
-}
 
 
 //-----------MULTIPLICATION
-{
-let multiplication = document.querySelector(".Multi")
 multiplication.addEventListener("mousedown", () => {
     multiplication.style.backgroundColor = "#ffe7bb"
 })
@@ -109,44 +153,50 @@ multiplication.addEventListener("mousedown", () => {
 multiplication.addEventListener("mouseup", () => {
     multiplication.style.backgroundColor = "#fdbe47"
 })
-}
 
 
 //-----------SUBTRACTION
-{
-let subtract = document.querySelector(".Minus")
 subtract.addEventListener("mousedown", () => {
+    opColor()
     subtract.style.backgroundColor = "#ffe7bb"
+    opType = "subtraction"
+    opSelected = true
+    numOne = display
+    display = ""
 })
 
 subtract.addEventListener("mouseup", () => {
-    subtract.style.backgroundColor = "#fdbe47"
+
 })
-}
 
 
 //-----------ADDITION
-{
-let addition = document.querySelector(".Plus")
+
 addition.addEventListener("mousedown", () => {
+    opColor()
     addition.style.backgroundColor = "#ffe7bb"
+    opType = "addition"
+    opSelected = true
+    numOne = display
+    display = ""
 })
 
 addition.addEventListener("mouseup", () => {
-    addition.style.backgroundColor = "#fdbe47"
+    // addition.style.backgroundColor = "#fdbe47"
 })
-}
-
 
 //-----------EQUAL
 {
-let equal = document.querySelector(".Equal")
 equal.addEventListener("mousedown", () => {
     equal.style.backgroundColor = "#ffe7bb"
 })
 
 equal.addEventListener("mouseup", () => {
     equal.style.backgroundColor = "#fdbe47"
+    if (display != "") {
+        display = operatorFunc()
+        screen.textContent = display
+    }
 })
 }
 
@@ -160,10 +210,11 @@ equal.addEventListener("mouseup", () => {
 
 //----------- Numbers
 {
-for (let i = 0; i < 10; i++) {
+for (let i = 0; i < 9; i++) {
     console.log(numbers[i])
     numbers[i].addEventListener("mousedown", () => {
         numbers[i].style.backgroundColor = "#9be9f8"
+        opColor()
     })
     
     numbers[i].addEventListener("mouseup", () => {
@@ -172,12 +223,32 @@ for (let i = 0; i < 10; i++) {
             display += numbers[i].textContent
             screen.textContent = display
         }
-        console.log(display)
     })
     
 }
 }
 
+//----------- Zero
+{
+let zero = document.querySelector(".buttonBig")
+zero.addEventListener("mousedown", () => {
+    zero.style.backgroundColor = "#9be9f8"
+    opColor()
+})
+
+zero.addEventListener("mouseup", () => {
+    zero.style.backgroundColor = "#3f9daf"
+    if (screen.textContent.length < 9) {
+        if (display == "0" || display == ""){
+        }
+        else {
+            display += zero.textContent
+            screen.textContent = display
+        }
+    }
+    console.log(display)
+})
+}
 
 //----------- Decimal
 {
@@ -200,7 +271,7 @@ decimal.addEventListener("mouseup", () => {
     if (decimalChecker()) {}
     else if (display.length >= 9) {}
     else {
-        if (display == ""){
+        if (display == "" || opSelected){
             display = 0
         }
         display = display + "."

@@ -27,7 +27,6 @@ body {
     box-sizing: border-box;
     border: 4px;
     border-style: solid;
-    border-color: rgb(39, 39, 39);
     align-items: center;
     justify-content: right;
     font-family: 'Courier New', Courier, monospace;
@@ -46,7 +45,7 @@ body {
     width: 11.96vh;
     box-sizing: border-box;
     border: 3px;
-    border-radius: 6%;
+    border-radius: 20%;
     border-style: solid;
     height: 9vh;
     font-family: 'Courier New', Courier, monospace;
@@ -61,7 +60,7 @@ body {
     width: 23.92vh;
     box-sizing: border-box;
     border: 3px;
-    border-radius: 6%;
+    border-radius: 20%;
     border-style: solid;
     height: 9vh;
     font-family: 'Courier New', Courier, monospace;
